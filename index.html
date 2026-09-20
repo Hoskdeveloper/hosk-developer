@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Hosk Developer — Software a la medida para tu negocio</title>
+<!-- build: panel-grid-1col-fix-v2 -->
+
+<meta name="description" content="Desarrollo de software a la medida para negocios: puntos de venta, aplicaciones, sitios web y automatización. Sin paquetes fijos, con base en Tapachula, Chiapas." />
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0' stop-color='rgb(34,211,238)'/><stop offset='1' stop-color='rgb(99,102,241)'/></linearGradient></defs><rect width='100' height='100' rx='22' fill='rgb(6,11,24)'/><text x='50' y='70' font-family='sans-serif' font-weight='800' font-size='54' fill='url(%23g)' text-anchor='middle'>H</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #060B18;
+    --ink: #EAF2FF;
+    --ink-muted: #8CA0C4;
+    --cyan: #22D3EE;
+    --blue: #3B82F6;
+    --indigo: #6366F1;
+    --sky: #60A5FA;
+    --gradient-a: linear-gradient(135deg, #22D3EE 0%, #3B82F6 60%, #6366F1 100%);
+    --gradient-b: linear-gradient(135deg, #6366F1 0%, #22D3EE 100%);
+    --gradient-btn: linear-gradient(135deg, #3B82F6 0%, #6366F1 100%);
+    --glass: rgba(255,255,255,0.05);
+    --glass-line: rgba(255,255,255,0.12);
+    --font-display: 'Space Grotesk', 'Segoe UI', sans-serif;
+    --font-body: 'Plus Jakarta Sans', -apple-system, sans-serif;
+    --font-mono: 'JetBrains Mono', 'SFMono-Regular', Consolas, monospace;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; overflow-x: hidden; width: 100%; }
+  img, svg { display: block; max-width: 100%; }
+  a { color: inherit; text-decoration: none; }
+  ul, ol { list-style: none; }
+  button { font: inherit; background: none; border: none; cursor: pointer; color: inherit; }
+
+  body { background: var(--bg); color: var(--ink); font-family: var(--font-body); line-height: 1.6; -webkit-font-smoothing: antialiased; overflow-x: hidden; width: 100%; max-width: 100%; }
+  h1, h2, h3 { font-family: var(--font-display); font-weight: 600; line-height: 1.12; letter-spacing: -0.01em; overflow-wrap: break-word; }
+  h1 { font-size: clamp(2.3rem, 1.6rem + 3vw, 3.9rem); font-weight: 700; line-height: 1.05; }
+  h2 { font-size: clamp(1.8rem, 1.5rem + 1.3vw, 2.6rem); }
+  h3 { font-size: 1.15rem; }
+  p { color: var(--ink-muted); max-width: 60ch; text-align: justify; text-justify: inter-word; overflow-wrap: break-word; }
+
+  .skip-link { position: absolute; left: -999px; top: 0; background: var(--cyan); color: #06101f; padding: 12px 18px; font-weight: 700; z-index: 200; border-radius: 0 0 8px 0; }
+  .skip-link:focus { left: 0; }
+  :focus-visible { outline: 2px solid var(--cyan); outline-offset: 3px; border-radius: 4px; }
+
+  .bg-glow {
+    position: fixed; inset: 0; z-index: 0; pointer-events: none;
+    transform: translateZ(0);
+    background-image:
+      radial-gradient(ellipse 900px 700px at 88% -8%, rgba(99,102,241,0.22), transparent 60%),
+      radial-gradient(ellipse 800px 650px at -8% 35%, rgba(34,211,238,0.14), transparent 60%),
+      radial-gradient(ellipse 850px 750px at 95% 95%, rgba(59,130,246,0.17), transparent 60%);
+  }
+  .page { position: relative; z-index: 1; max-width: 100%; min-width: 0; }
+  .container { max-width: 1200px; margin: 0 auto; padding-inline: clamp(20px, 5vw, 48px); min-width: 0; }
+  .container-narrow { max-width: 760px; }
+  .section { padding-block: clamp(72px, 10vw, 128px); }
+  .gradient-divider { height: 1px; max-width: 1200px; margin-inline: auto; background: linear-gradient(90deg, transparent, rgba(34,211,238,0.5), rgba(99,102,241,0.5), transparent); }
+  .reveal { opacity: 0; transform: translateY(26px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .reveal.is-visible { opacity: 1; transform: translateY(0); }
+  .section-intro { margin-top: 16px; font-size: 1.05rem; }
+
+  .btn { display: inline-flex; align-items: center; gap: 8px; padding: 15px 26px; border-radius: 12px; border: 1px solid transparent; font-family: var(--font-display); font-size: 0.98rem; font-weight: 600; transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease, color 0.2s ease; white-space: nowrap; }
+  .btn-primary { background: var(--gradient-btn); color: #F5FAFF; box-shadow: 0 10px 34px rgba(59,130,246,0.4); }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 14px 42px rgba(59,130,246,0.55); }
+  .btn-secondary { background: rgba(255,255,255,0.05); color: var(--ink); border-color: var(--glass-line); backdrop-filter: blur(10px); }
+  .btn-secondary:hover { border-color: var(--cyan); color: var(--cyan); }
+
+  .nav { position: sticky; top: 0; z-index: 60; background: rgba(6,11,24,0.72); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid var(--glass-line); transform: translateZ(0); will-change: transform; }
+  .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 74px; position: relative; }
+  .logo { font-family: var(--font-display); font-weight: 700; font-size: 1.4rem; background: var(--gradient-a); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .nav-links { display: none; position: absolute; top: 100%; left: 0; right: 0; flex-direction: column; align-items: flex-start; gap: 4px; background: rgba(8,13,28,0.98); border-bottom: 1px solid var(--glass-line); padding: 18px clamp(20px, 5vw, 48px) 26px; }
+  .nav.menu-open .nav-links { display: flex; }
+  .nav-links a:not(.btn) { padding: 10px 0; color: var(--ink-muted); font-weight: 500; }
+  .nav-links a:not(.btn):hover { color: var(--ink); }
+  .nav-links .btn { margin-top: 12px; }
+  .nav-toggle { display: flex; flex-direction: column; justify-content: center; gap: 5px; width: 32px; height: 32px; }
+  .nav-toggle span { display: block; width: 100%; height: 2px; border-radius: 2px; background: var(--ink); transition: transform 0.2s ease, opacity 0.2s ease; }
+  .nav.menu-open .nav-toggle span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .nav.menu-open .nav-toggle span:nth-child(2) { opacity: 0; }
+  .nav.menu-open .nav-toggle span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+  @media (min-width: 861px) {
+    .nav-toggle { display: none; }
+    .nav-links { display: flex !important; position: static; flex-direction: row; align-items: center; background: none; border: none; padding: 0; gap: 32px; }
+    .nav-links a:not(.btn) { padding: 0; }
+    .nav-links .btn { margin-top: 0; }
+  }
+
+  /* zona 3D: ahora cubre tanto el hero como la franja de valores que va justo debajo */
+  .hero-zone { position: relative; overflow: hidden;
+    background: radial-gradient(ellipse 900px 600px at 15% 10%, rgba(99,102,241,0.4), transparent 60%), radial-gradient(ellipse 800px 700px at 90% 80%, rgba(34,211,238,0.3), transparent 60%), var(--bg); }
+  .hero-3d-bg { position: absolute; inset: 0; z-index: 0; max-width: 100%; }
+  .hero-3d-bg canvas { display: block; max-width: 100%; }
+  .hero-vignette { position: absolute; inset: 0; z-index: 1; pointer-events: none;
+    background:
+      linear-gradient(100deg, rgba(6,11,24,0.88) 0%, rgba(6,11,24,0.6) 38%, rgba(6,11,24,0.15) 62%, rgba(6,11,24,0.02) 100%),
+      linear-gradient(180deg, rgba(6,11,24,0) 0%, rgba(6,11,24,0.28) 75%, rgba(6,11,24,0.9) 100%); }
+  .hero { position: relative; z-index: 2; min-height: clamp(560px, 92vh, 980px); display: flex; align-items: center; }
+  .hero-inner { position: relative; z-index: 2; display: grid; grid-template-columns: 1fr; gap: 48px; align-items: center; padding-block: clamp(48px, 14vw, 120px) 56px; width: 100%; min-width: 0; }
+  .hero-inner > * { min-width: 0; }
+  .hero-text { position: relative; }
+  .hero-text h1 { margin-bottom: 24px; }
+  .hero-text p { margin-bottom: 34px; font-size: 1.1rem; }
+  /* 1. Modifica esta parte para el diseño en celulares (móviles) */
+  .hero-ctas { 
+    display: flex; 
+    flex-wrap: wrap; 
+    align-items: center; 
+    justify-content: center; 
+    gap: 16px; 
+  } 
+
+  .hero-ctas .btn-primary { 
+    width: 100%;           /* <- CAMBIO: Antes decía 'auto', ahora '100%' */
+    max-width: 60ch;       /* <- CAMBIO: Agregamos esto aquí para limitar el ancho */
+    justify-content: center; 
+    padding: 17px 30px; 
+    font-size: 1.02rem; 
+    text-align: center;    
+  } 
+
+  /* 2. Modifica la media query para pantallas grandes */
+  @media (min-width: 940px) { 
+    .hero-ctas { 
+      justify-content: flex-start; 
+    } 
+    /* CAMBIO: Eliminamos la regla del '.btn-primary' de aquí adentro porque ya no es necesaria */
+  }
+
+  /* shared "window" chrome used by hero mockup, code block and process terminal */
+  .device-window { border-radius: 20px; background: rgba(255,255,255,0.06); backdrop-filter: blur(22px); -webkit-backdrop-filter: blur(22px); border: 1px solid rgba(255,255,255,0.14); box-shadow: 0 40px 80px rgba(0,0,0,0.5), 0 0 60px rgba(59,130,246,0.22); overflow: hidden; transform: translateZ(0); }
+  .device-topbar { display: flex; align-items: center; gap: 7px; padding: 14px 18px; border-bottom: 1px solid rgba(255,255,255,0.08); }
+  .mdot { width: 10px; height: 10px; border-radius: 50%; display: block; }
+  .device-filename { margin-left: 10px; font-family: var(--font-mono); font-size: 0.78rem; color: var(--ink-muted); }
+
+  .hero-visual { perspective: 1700px; }
+  .mockup-window { max-width: 460px; margin-inline: auto; transform: rotateY(-15deg) rotateX(7deg); transform-style: preserve-3d; animation: float-mockup 6.5s ease-in-out infinite; }
+  @keyframes float-mockup { 0%, 100% { transform: rotateY(-15deg) rotateX(7deg) translateY(0); } 50% { transform: rotateY(-15deg) rotateX(7deg) translateY(-16px); } }
+  .mockup-body { display: flex; min-height: 270px; }
+  .mockup-sidebar { width: 54px; background: rgba(255,255,255,0.03); display: flex; flex-direction: column; gap: 16px; padding: 20px 0; align-items: center; border-right: 1px solid rgba(255,255,255,0.07); }
+  .mockup-sidebar-item { width: 22px; height: 22px; border-radius: 7px; background: rgba(255,255,255,0.09); }
+  .mockup-sidebar-item.active { background: var(--gradient-a); }
+  .mockup-main { flex: 1; padding: 22px; display: flex; flex-direction: column; gap: 22px; }
+  .mockup-cards { display: flex; gap: 12px; }
+  .mockup-card { flex: 1; min-width: 0; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.09); border-radius: 12px; padding: 13px; display: flex; flex-direction: column; gap: 9px; }
+  .mockup-dot { width: 16px; height: 16px; border-radius: 50%; background: var(--gradient-a); }
+  .mockup-dot.alt { background: var(--gradient-b); }
+  .mockup-line { display: block; height: 6px; border-radius: 3px; background: rgba(255,255,255,0.2); }
+  .mockup-line.dim { background: rgba(255,255,255,0.09); }
+  .mockup-line.w60 { width: 60%; } .mockup-line.w40 { width: 40%; } .mockup-line.w70 { width: 70%; } .mockup-line.w30 { width: 30%; }
+  .mockup-chart { flex: 1; display: flex; align-items: flex-end; gap: 10px; }
+  .mockup-chart .bar { flex: 1; height: var(--h); border-radius: 6px 6px 0 0; background: var(--gradient-a); opacity: 0.92; }
+  .mockup-chart .bar:nth-child(even) { background: var(--gradient-b); }
+  @media (min-width: 940px) { .hero-inner { grid-template-columns: 1.05fr 1fr; gap: 40px; } }
+
+  /* value strip: vive dentro de .hero-zone, sobre el fondo 3D */
+  .value-strip { position: relative; z-index: 2; padding-block: clamp(40px, 6vw, 64px); border-bottom: 1px solid var(--glass-line); }
+  .value-grid { display: grid; grid-template-columns: 1fr; gap: 28px; min-width: 0; }
+  .value-item { display: flex; align-items: center; gap: 14px; min-width: 0; }
+  .value-icon { flex-shrink: 0; width: 38px; height: 38px; border-radius: 11px; background: var(--gradient-a); display: flex; align-items: center; justify-content: center; }
+  .value-icon svg { width: 20px; height: 20px; }
+  .value-code-icon { font-family: var(--font-mono); font-weight: 700; color: #06101f; font-size: 0.85rem; }
+  .value-item span:last-child { min-width: 0; overflow-wrap: break-word; font-weight: 500; font-size: 0.96rem; color: var(--ink); }
+  @media (min-width: 760px) { .value-grid { grid-template-columns: repeat(4, 1fr); } }
+
+  /* capabilities: bento grid */
+  .section-head { max-width: 640px; }
+  .panel-grid { margin-top: 48px; display: grid; grid-template-columns: 1fr; gap: 20px; min-width: 0; }
+  .panel { position: relative; padding: 32px 30px; border-radius: 22px; background: var(--glass); border: 1px solid var(--glass-line); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); transform-style: preserve-3d; transition: transform 0.12s ease-out, box-shadow 0.3s ease, border-color 0.3s ease, background-color 0.3s ease; min-width: 0; overflow-wrap: break-word; will-change: transform; }
+  .panel:hover { border-color: rgba(59,130,246,0.45); background: rgba(255,255,255,0.08); box-shadow: 0 26px 60px rgba(59,130,246,0.28); }
+  .panel.is-open { border-color: rgba(34,211,238,0.35); background: rgba(34,211,238,0.06); }
+  .panel.is-open:hover { border-color: rgba(34,211,238,0.6); box-shadow: 0 26px 60px rgba(34,211,238,0.32); }
+  .picon { width: 50px; height: 50px; margin-bottom: 22px; }
+  .panel h3 { margin-bottom: 12px; }
+  .panel p { font-size: 0.97rem; max-width: 42ch; }
+  .panel.wide { grid-column: span 1; }
+  @media (min-width: 640px) { .panel-grid { grid-template-columns: repeat(2, 1fr); } .panel.wide { grid-column: span 2; } }
+  @media (min-width: 1000px) { .panel-grid { grid-template-columns: repeat(3, 1fr); } }
+  /* en tablet (2 columnas) "Algo distinto" queda junto a "CRM y automatización"; en teléfono todo va en una sola columna */
+  @media (min-width: 640px) and (max-width: 999px) {
+    .panel-grid { grid-template-columns: repeat(2, 1fr); }
+    .panel-grid .panel.wide:last-child { grid-column: span 1; }
+  }
+  @media (max-width: 639px) {
+    .panel-grid { grid-template-columns: 1fr !important; gap: 14px; }
+    .panel-grid .panel.wide:last-child .picon { margin-bottom: 14px; width: 38px; height: 38px; }
+  }
+
+
+  /* code showcase */
+  .code-grid { display: grid; grid-template-columns: 1fr; gap: 48px; align-items: center; min-width: 0; }
+  .code-text, .code-visual { min-width: 0; }
+  .code-text p { margin-top: 18px; font-size: 1.05rem; }
+  .code-window pre { margin: 0; padding: 24px 26px; overflow-x: hidden; max-width: 100%; }
+  .code-window code { font-family: var(--font-mono); font-size: 0.86rem; line-height: 1.8; color: var(--ink); white-space: pre-wrap; word-break: break-word; overflow-wrap: anywhere; }
+  @media (max-width: 420px) { .code-window code { font-size: 0.78rem; } .code-window pre { padding: 20px 18px; } }
+  .c-com { color: #64789E; font-style: italic; }
+  .c-kw { color: var(--sky); font-weight: 600; }
+  .c-class { color: var(--cyan); font-weight: 600; }
+  .c-fn { color: #93C5FD; }
+  .c-str { color: #B4C6FF; }
+  .cursor-blink { color: var(--cyan); animation: blink 1s steps(1) infinite; }
+  @keyframes blink { 50% { opacity: 0; } }
+  @media (min-width: 940px) { .code-grid { grid-template-columns: 0.85fr 1.15fr; } }
+
+  /* process: pipeline abierto, deliberadamente distinto a la ventana de código */
+  .pipeline { margin-top: 48px; max-width: 680px; }
+  .pipeline-step { position: relative; padding-left: 68px; padding-bottom: 48px; }
+  .pipeline-step:last-child { padding-bottom: 0; }
+  .pipeline-node { position: absolute; left: 0; top: 0; width: 46px; height: 46px; border-radius: 14px; background: var(--gradient-a); display: flex; align-items: center; justify-content: center; font-family: var(--font-mono); font-weight: 700; font-size: 0.95rem; color: #06101f; box-shadow: 0 12px 28px rgba(59,130,246,0.4); }
+  .pipeline-step:not(:last-child)::after { content: ""; position: absolute; left: 23px; top: 54px; bottom: 0; width: 2px; background: linear-gradient(180deg, rgba(59,130,246,0.5), rgba(34,211,238,0.05)); }
+  .pipeline-step h3 { margin-bottom: 8px; }
+  .pipeline-step p { font-size: 0.97rem; }
+
+  /* faq: presentado como chat, no como acordeón */
+  .chat-window { margin-top: 44px; }
+  .chat-body { max-height: 360px; min-height: 140px; overflow-y: auto; padding: 22px 22px 8px; display: flex; flex-direction: column; gap: 14px; }
+  .chat-msg { max-width: 84%; padding: 12px 16px; border-radius: 16px; font-size: 0.95rem; line-height: 1.5; }
+  .chat-msg.bot { align-self: flex-start; background: rgba(6,11,24,0.65); border: 1px solid var(--glass-line); border-bottom-left-radius: 4px; color: var(--ink); }
+  .chat-msg.user { align-self: flex-end; background: var(--gradient-btn); border-bottom-right-radius: 4px; color: #FFFFFF; }
+  .chat-msg.typing { display: flex; gap: 5px; align-items: center; padding: 14px 18px; }
+  .typing-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--ink-muted); animation: typing-bounce 1.2s infinite ease-in-out; }
+  .typing-dot:nth-child(2) { animation-delay: 0.15s; }
+  .typing-dot:nth-child(3) { animation-delay: 0.3s; }
+  @keyframes typing-bounce { 0%, 60%, 100% { transform: translateY(0); opacity: 0.5; } 30% { transform: translateY(-4px); opacity: 1; } }
+  .chat-chips { display: flex; flex-wrap: wrap; gap: 10px; padding: 18px 22px 22px; border-top: 1px solid var(--glass-line); }
+  .chat-chip { flex: 1 1 auto; text-align: center; font-size: 0.82rem; padding: 9px 15px; border-radius: 100px; background: rgba(255,255,255,0.05); border: 1px solid var(--glass-line); color: var(--ink); transition: border-color 0.2s ease, background-color 0.2s ease; }
+  .chat-chip:hover { border-color: var(--cyan); background: rgba(34,211,238,0.1); }
+  /* el texto de la pregunta (burbuja del usuario) debe verse claro sobre el fondo azul, no gris */
+  .chat-msg p { color: inherit; text-align: left; max-width: none; }
+
+  /* contact */
+  .contact-cta { text-align: left; }
+  .contact-headline { font-size: clamp(2rem, 1.5rem + 2vw, 3.2rem); margin-bottom: 18px; }
+  .contact-headline .grad { background: var(--gradient-a); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .contact p { font-size: 1.08rem; }
+  .contact-panel { margin-top: 40px; border-radius: 20px; border: 1px solid var(--glass-line); background: var(--glass); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); padding: 6px 28px; max-width: 100%; transform: translateZ(0); }
+  .contact-line { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 6px 16px; padding: 22px 0; border-bottom: 1px solid var(--glass-line); }
+  .contact-line:last-child { border-bottom: none; }
+  .contact-label { flex-shrink: 0; font-size: 0.85rem; color: var(--ink-muted); font-weight: 500; }
+  .contact-value { min-width: 0; max-width: 100%; overflow-wrap: break-word; word-break: break-word; font-size: 1.2rem; font-weight: 600; font-family: var(--font-display); transition: color 0.2s ease; }
+  .contact-line:hover .contact-value { color: var(--cyan); }
+  @media (max-width: 480px) {
+    .contact-line { flex-direction: column; align-items: flex-start; gap: 6px; }
+  }
+  @media (max-width: 400px) {
+    .contact-panel { padding: 6px 18px; }
+    .contact-value { font-size: 1.05rem; }
+  }
+
+  .footer { border-top: 1px solid var(--glass-line); padding-block: 44px; }
+  .footer-inner { display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+  .footer p { font-size: 0.92rem; }
+  .footer small { font-size: 0.78rem; color: var(--ink-muted); }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+  }
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">Saltar al contenido</a>
+<div class="bg-glow" aria-hidden="true"></div>
+
+<div class="page">
+  <header class="nav" id="siteNav">
+    <div class="container nav-inner">
+      <a href="#top" class="logo">HOSK DEVELOPER</a>
+      <nav class="nav-links" id="navLinks">
+        <a href="#capacidades">Capacidades</a>
+        <a href="#como-construyo">Cómo construyo</a>
+        <a href="#preguntas">Preguntas</a>
+      </nav>
+      <button class="nav-toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="navLinks">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main id="main">
+    <div class="hero-zone">
+      <div class="hero-3d-bg" id="hero3d" aria-hidden="true"></div>
+      <div class="hero-vignette" aria-hidden="true"></div>
+    <section class="hero" id="top">
+      <div class="container hero-inner">
+        <div class="hero-text">
+          <h1>SOFTWARE A LA MEDIDA DE TU NEGOCIO</h1>
+          <p>Trabajo directamente contigo, sin paquetes cerrados ni plantillas: te ayudo a construir el sistema que tu negocio realmente necesita, desde un punto de venta hasta la aplicación más específica para tu operación.</p>
+          <div class="hero-ctas">
+            <a class="btn btn-primary" href="https://wa.me/529626004087?text=Hola,%20vi%20tu%20pagina%20y%20me%20interesa%20platicar%20sobre%20un%20proyecto.">Cuéntame tu proyecto</a>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <div class="mockup-window device-window">
+            <div class="device-topbar">
+              <span class="mdot" style="background:#FF5F57"></span>
+              <span class="mdot" style="background:#FEBC2E"></span>
+              <span class="mdot" style="background:#28C840"></span>
+            </div>
+            <div class="mockup-body">
+              <div class="mockup-sidebar">
+                <span class="mockup-sidebar-item active"></span>
+                <span class="mockup-sidebar-item"></span>
+                <span class="mockup-sidebar-item"></span>
+                <span class="mockup-sidebar-item"></span>
+              </div>
+              <div class="mockup-main">
+                <div class="mockup-cards">
+                  <div class="mockup-card">
+                    <span class="mockup-dot"></span>
+                    <span class="mockup-line w60"></span>
+                    <span class="mockup-line w40 dim"></span>
+                  </div>
+                  <div class="mockup-card">
+                    <span class="mockup-dot alt"></span>
+                    <span class="mockup-line w70"></span>
+                    <span class="mockup-line w30 dim"></span>
+                  </div>
+                </div>
+                <div class="mockup-chart">
+                  <span class="bar" style="--h:45%"></span>
+                  <span class="bar" style="--h:75%"></span>
+                  <span class="bar" style="--h:60%"></span>
+                  <span class="bar" style="--h:92%"></span>
+                  <span class="bar" style="--h:55%"></span>
+                  <span class="bar" style="--h:80%"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="value-strip">
+      <div class="container value-grid">
+        <div class="value-item reveal">
+          <span class="value-icon"><svg viewBox="0 0 24 24"><circle cx="9" cy="12" r="6" fill="white" opacity="0.95"/><circle cx="16" cy="12" r="6" fill="white" opacity="0.55"/></svg></span>
+          <span>Hablas directo conmigo, sin intermediarios</span>
+        </div>
+        <div class="value-item reveal">
+          <span class="value-icon"><svg viewBox="0 0 24 24" fill="none"><rect x="5" y="3" width="14" height="18" rx="2" stroke="white" stroke-width="1.6"/><line x1="8" y1="8" x2="16" y2="8" stroke="white" stroke-width="1.6"/><line x1="8" y1="12" x2="16" y2="12" stroke="white" stroke-width="1.6"/><line x1="8" y1="16" x2="13" y2="16" stroke="white" stroke-width="1.6"/></svg></span>
+          <span>Cotización clara antes de empezar, sin sorpresas</span>
+        </div>
+        <div class="value-item reveal">
+          <span class="value-icon"><span class="value-code-icon">&lt;/&gt;</span></span>
+          <span>Un sistema y código adaptado a tu negocio</span>
+        </div>
+        <div class="value-item reveal">
+          <span class="value-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="white" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <span>Me adapto a lo que tu negocio necesita</span>
+        </div>
+      </div>
+    </section>
+    </div>
+
+    <section class="section capabilities" id="capacidades">
+      <div class="container">
+        <div class="section-head reveal">
+          <h2>En qué puedo ayudarte</h2>
+          <p class="section-intro">Esta es una guía de lo que suelo construir, no una lista cerrada. Si tu negocio necesita algo distinto, también podemos hacerlo.</p>
+        </div>
+        <div class="panel-grid">
+          <article class="panel wide reveal">
+            <svg viewBox="0 0 48 48" class="picon"><defs><linearGradient id="g1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#22D3EE"/><stop offset="1" stop-color="#6366F1"/></linearGradient></defs><rect x="8" y="8" width="32" height="22" rx="4" fill="url(#g1)"/><rect x="16" y="34" width="16" height="6" rx="2" fill="url(#g1)" opacity="0.55"/><rect x="13" y="13" width="22" height="3" rx="1.5" fill="#06101f" opacity="0.35"/></svg>
+            <h3>Puntos de venta e inventario</h3>
+            <p>Registra ventas, controla existencias y consulta cortes de caja desde un solo sistema.</p>
+          </article>
+          <article class="panel reveal">
+            <svg viewBox="0 0 48 48" class="picon"><defs><linearGradient id="g2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#22D3EE"/><stop offset="1" stop-color="#6366F1"/></linearGradient></defs><rect x="8" y="28" width="8" height="12" rx="2" fill="url(#g2)"/><rect x="20" y="18" width="8" height="22" rx="2" fill="url(#g2)" opacity="0.85"/><rect x="32" y="10" width="8" height="30" rx="2" fill="url(#g2)" opacity="0.7"/></svg>
+            <h3>Software administrativo</h3>
+            <p>Organiza ingresos, gastos, clientes, proveedores y reportes en un panel central.</p>
+          </article>
+          <article class="panel reveal">
+            <svg viewBox="0 0 48 48" class="picon"><defs><linearGradient id="g3" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#22D3EE"/><stop offset="1" stop-color="#6366F1"/></linearGradient></defs><rect x="6" y="18" width="22" height="18" rx="5" fill="url(#g3)" opacity="0.55"/><rect x="14" y="10" width="22" height="18" rx="5" fill="url(#g3)" opacity="0.78"/><rect x="22" y="4" width="20" height="16" rx="5" fill="url(#g3)"/></svg>
+            <h3>Aplicaciones a medida</h3>
+            <p>Programas de escritorio, web o móvil diseñados alrededor de tu proceso, no al revés.</p>
+          </article>
+          <article class="panel wide reveal">
+            <svg viewBox="0 0 48 48" class="picon"><defs><linearGradient id="g4" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#22D3EE"/><stop offset="1" stop-color="#6366F1"/></linearGradient></defs><rect x="6" y="9" width="36" height="30" rx="6" fill="url(#g4)" opacity="0.85"/><line x1="6" y1="18" x2="42" y2="18" stroke="#06101f" stroke-opacity="0.3" stroke-width="1.5"/><circle cx="12" cy="13.5" r="1.6" fill="#06101f" fill-opacity="0.5"/><circle cx="17" cy="13.5" r="1.6" fill="#06101f" fill-opacity="0.5"/><circle cx="22" cy="13.5" r="1.6" fill="#06101f" fill-opacity="0.5"/></svg>
+            <h3>Web, tiendas y experiencias digitales</h3>
+            <p>Sitios, catálogos, tiendas en línea, menús digitales y formularios con tu marca.</p>
+          </article>
+          <article class="panel reveal">
+            <svg viewBox="0 0 48 48" class="picon"><defs><linearGradient id="g5" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#22D3EE"/><stop offset="1" stop-color="#6366F1"/></linearGradient></defs><circle cx="18" cy="24" r="13" fill="url(#g5)" opacity="0.8"/><circle cx="30" cy="24" r="13" fill="url(#g5)" opacity="0.55"/></svg>
+            <h3>CRM y automatización</h3>
+            <p>Seguimiento de clientes y tareas repetitivas resueltas con software, no con más trabajo manual.</p>
+          </article>
+          <article class="panel is-open wide reveal">
+            <svg viewBox="0 0 48 48" class="picon"><defs><linearGradient id="g6" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#22D3EE"/><stop offset="1" stop-color="#3B82F6"/></linearGradient></defs><circle cx="16" cy="18" r="10" fill="url(#g6)" opacity="0.85"/><rect x="24" y="22" width="18" height="18" rx="4" fill="url(#g6)" opacity="0.6" transform="rotate(8 33 31)"/><path d="M14 44 L24 28 L34 44 Z" fill="url(#g6)" opacity="0.5"/></svg>
+            <h3>Algo distinto</h3>
+            <p>¿Tu negocio necesita algo que no está en esta lista? Cuéntamelo y buscamos cómo construirlo.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <div class="gradient-divider" aria-hidden="true"></div>
+
+    <section class="section code-showcase" id="como-construyo">
+      <div class="container code-grid">
+        <div class="code-text reveal">
+          <h2>Código pensado para tu negocio, no para un molde</h2>
+          <p>Cada proyecto empieza desde cero, con la tecnología correcta para lo que necesitas resolver. Sin dependencias innecesarias ni plantillas genéricas: solo el código que tu sistema realmente requiere, listo para crecer cuando tu negocio lo haga.</p>
+        </div>
+        <div class="code-visual reveal">
+          <div class="code-window device-window tilt-interactive">
+            <div class="device-topbar">
+              <span class="mdot" style="background:#FF5F57"></span>
+              <span class="mdot" style="background:#FEBC2E"></span>
+              <span class="mdot" style="background:#28C840"></span>
+              <span class="device-filename">tu-negocio.js</span>
+            </div>
+            <pre><code><span class="c-com">// pensado a tu medida</span>
+<span class="c-kw">class</span> <span class="c-class">TuNegocio</span> {
+  <span class="c-fn">constructor</span>(idea) {
+    <span class="c-kw">this</span>.stack = <span class="c-str">"el que tu proyecto necesite"</span>;
+    <span class="c-kw">this</span>.moldesFijos = <span class="c-kw">false</span>;
+  }
+
+  <span class="c-fn">construir</span>() {
+    <span class="c-kw">const</span> plan = analizar(idea);
+    <span class="c-kw">return new</span> <span class="c-class">Solución</span>(plan);
+  }
+}
+
+<span class="c-kw">const</span> proyecto = <span class="c-kw">new</span> <span class="c-class">TuNegocio</span>(tuIdea);
+proyecto.<span class="c-fn">construir</span>();<span class="cursor-blink">|</span></code></pre>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="gradient-divider" aria-hidden="true"></div>
+
+    <section class="section process" id="proceso">
+      <div class="container">
+        <div class="section-head reveal"><h2>Cómo trabajo</h2></div>
+        <ol class="pipeline">
+          <li class="pipeline-step reveal">
+            <span class="pipeline-node">01</span>
+            <h3>Cuéntame qué necesita tu negocio</h3>
+            <p>Platicamos sobre tu operación, tus objetivos y el presupuesto con el que cuentas. Sin costo ni compromiso.</p>
+          </li>
+          <li class="pipeline-step reveal">
+            <span class="pipeline-node">02</span>
+            <h3>Te preparo una propuesta clara</h3>
+            <p>Defino el alcance, el tiempo de entrega y una cotización a la medida de tu proyecto, no de una lista de precios genérica.</p>
+          </li>
+          <li class="pipeline-step reveal">
+            <span class="pipeline-node">03</span>
+            <h3>Construyo y reviso avances contigo</h3>
+            <p>Te muestro el progreso, ajustamos lo necesario en el camino y evitamos sorpresas al final.</p>
+          </li>
+          <li class="pipeline-step reveal">
+            <span class="pipeline-node">04</span>
+            <h3>Entrego y te acompaño</h3>
+            <p>Te explico cómo usar el sistema y quedo disponible para resolver dudas o hacer ajustes.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <div class="gradient-divider" aria-hidden="true"></div>
+
+    <section class="section faq" id="preguntas">
+      <div class="container container-narrow">
+        <div class="section-head reveal">
+          <h2>¿Tienes dudas? Pregúntame</h2>
+          <p class="section-intro">Escribe tu pregunta o elige una de las más comunes.</p>
+        </div>
+        <div class="chat-window device-window tilt-interactive reveal">
+          <div class="device-topbar">
+            <span class="mdot" style="background:#FF5F57"></span>
+            <span class="mdot" style="background:#FEBC2E"></span>
+            <span class="mdot" style="background:#28C840"></span>
+            <span class="device-filename">preguntas.chat</span>
+          </div>
+          <div class="chat-body" id="chatBody">
+            <div class="chat-msg bot"><p>Hola 👋 Soy el asistente de Hosk Developer. Elige una pregunta:</p></div>
+          </div>
+          <div class="chat-chips" id="chatChips">
+            <button type="button" class="chat-chip" data-faq="0">No tengo claro qué necesito</button>
+            <button type="button" class="chat-chip" data-faq="1">¿Trabajas con negocios pequeños?</button>
+            <button type="button" class="chat-chip" data-faq="2">¿Cómo funciona el costo?</button>
+            <button type="button" class="chat-chip" data-faq="3">¿El sistema puede crecer?</button>
+            <button type="button" class="chat-chip" data-faq="4">¿Necesito estar en Tapachula?</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section contact" id="contacto">
+      <div class="container">
+        <div class="contact-cta reveal">
+          <h2 class="contact-headline">¿Construimos <span class="grad">tu proyecto</span>?<span class="cursor-blink">_</span></h2>
+          <p>Escríbeme y cuéntame qué necesita tu negocio. La primera plática y la cotización inicial no tienen costo.</p>
+        </div>
+        <div class="contact-panel container-narrow reveal tilt-interactive" style="margin-inline:0;">
+          <a class="contact-line" href="https://wa.me/529626004087?text=Hola,%20quiero%20platicar%20sobre%20un%20proyecto.">
+            <span class="contact-label">WhatsApp</span>
+            <span class="contact-value">+52 962 600 4087</span>
+          </a>
+          <a class="contact-line" href="mailto:hoskdeveloper@gmail.com">
+            <span class="contact-label">Correo</span>
+            <span class="contact-value">hoskdeveloper@gmail.com</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <span class="logo">HOSK DEVELOPER</span>
+      <p>Software a la medida, sin moldes fijos.</p>
+      <small>© 2026 Hosk Developer · Tapachula, Chiapas, México</small>
+    </div>
+  </footer>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    var nav = document.getElementById('siteNav');
+    var toggle = document.getElementById('navToggle');
+    var links = document.querySelectorAll('#navLinks a');
+    if (nav && toggle) {
+      toggle.addEventListener('click', function () {
+        var isOpen = nav.classList.toggle('menu-open');
+        toggle.setAttribute('aria-expanded', String(isOpen));
+      });
+      links.forEach(function (link) {
+        link.addEventListener('click', function () {
+          nav.classList.remove('menu-open');
+          toggle.setAttribute('aria-expanded', 'false');
+        });
+      });
+    }
+
+    var faqData = [
+      { keywords: ['no se', 'no sé', 'no tengo claro', 'no sé qué', 'idea', 'no se me ocurre', 'no tengo idea', 'que necesito', 'qué necesito'], q: 'No tengo claro qué necesito', a: 'No hay problema. En la primera conversación te ayudo a aterrizar la idea: de qué trata tu negocio, qué te quita tiempo hoy y qué tendría más sentido resolver primero.' },
+      { keywords: ['grande', 'pequeño', 'pequeno', 'tamaño', 'tamano', 'chico', 'chica'], q: '¿Trabajas con negocios pequeños?', a: 'No trabajo solo con negocios grandes. Puedo ayudarte sin importar el tamaño de tu negocio: el proyecto se adapta a lo que necesitas, ya sea un local con un punto de venta o una operación con varias sucursales.' },
+      { keywords: ['costo', 'precio', 'cuanto', 'cuánto', 'cotizacion', 'cotización', 'pagar'], q: '¿Cómo funciona el costo?', a: 'Cada proyecto es distinto, así que cada cotización también lo es. Te explico con claridad el alcance y el costo antes de empezar, ajustado a lo que tu negocio realmente necesita.' },
+      { keywords: ['crecer', 'despues', 'después', 'adelante', 'escalar', 'agregar', 'mas adelante'], q: '¿El sistema puede crecer?', a: 'Sí. Puedes empezar con lo esencial e ir agregando módulos, usuarios o funciones conforme tu negocio lo requiera.' },
+      { keywords: ['tapachula', 'remoto', 'ciudad', 'presencial', 'donde', 'dónde', 'ubicacion', 'ubicación'], q: '¿Necesito estar en Tapachula?', a: 'No necesariamente. Puedo trabajar de forma remota con negocios en otras ciudades; si estás en la región, también podemos coordinar algo presencial.' }
+    ];
+
+    function chatAddMsg(text, from) {
+      var body = document.getElementById('chatBody');
+      if (!body) return;
+      var div = document.createElement('div');
+      div.className = 'chat-msg ' + from;
+      var p = document.createElement('p');
+      p.textContent = text;
+      div.appendChild(p);
+      body.appendChild(div);
+      body.scrollTop = body.scrollHeight;
+    }
+    function chatShowTyping() {
+      var body = document.getElementById('chatBody');
+      if (!body) return;
+      var div = document.createElement('div');
+      div.className = 'chat-msg bot typing';
+      div.id = 'chatTyping';
+      div.innerHTML = '<span class="typing-dot"></span><span class="typing-dot"></span><span class="typing-dot"></span>';
+      body.appendChild(div);
+      body.scrollTop = body.scrollHeight;
+    }
+    function chatHideTyping() {
+      var el = document.getElementById('chatTyping');
+      if (el) el.remove();
+    }
+
+    document.querySelectorAll('.chat-chip').forEach(function (chip) {
+      chip.addEventListener('click', function () {
+        var idx = parseInt(chip.getAttribute('data-faq'), 10);
+        chatAddMsg(faqData[idx].q, 'user');
+        chatShowTyping();
+        setTimeout(function () { chatHideTyping(); chatAddMsg(faqData[idx].a, 'bot'); }, 500);
+      });
+    });
+
+    var revealEls = document.querySelectorAll('.reveal');
+    if ('IntersectionObserver' in window && !reduceMotion) {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            var el = entry.target;
+            // promueve el elemento a su propia capa justo antes de animar, y la libera al terminar
+            // (evita que el navegador tenga que recalcular el desenfoque de vidrio de golpe al hacer scroll)
+            el.style.willChange = 'opacity, transform';
+            el.classList.add('is-visible');
+            el.addEventListener('transitionend', function () { el.style.willChange = 'auto'; }, { once: true });
+            io.unobserve(el);
+          }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+      revealEls.forEach(function (el, i) {
+        el.style.transitionDelay = Math.min(i % 6, 6) * 0.06 + 's';
+        io.observe(el);
+      });
+    } else {
+      revealEls.forEach(function (el) { el.classList.add('is-visible'); });
+    }
+
+    if (!reduceMotion) {
+      document.querySelectorAll('.panel, .tilt-interactive').forEach(function (panel) {
+        var tiltTicking = false;
+        var tiltX = 0, tiltY = 0;
+        panel.addEventListener('mousemove', function (e) {
+          var rect = panel.getBoundingClientRect();
+          tiltX = e.clientX - rect.left;
+          tiltY = e.clientY - rect.top;
+          if (!tiltTicking) {
+            tiltTicking = true;
+            requestAnimationFrame(function () {
+              var rotateX = ((tiltY / rect.height) - 0.5) * -7;
+              var rotateY = ((tiltX / rect.width) - 0.5) * 7;
+              panel.style.transform = 'perspective(900px) rotateX(' + rotateX + 'deg) rotateY(' + rotateY + 'deg) translateZ(4px)';
+              tiltTicking = false;
+            });
+          }
+        });
+        panel.addEventListener('mouseleave', function () {
+          panel.style.transform = 'perspective(900px) rotateX(0deg) rotateY(0deg) translateZ(0px)';
+        });
+      });
+    }
+
+    try {
+      if (!reduceMotion) { initHero3D(); }
+    } catch (e) {
+      console.warn('Escena 3D no disponible:', e);
+    }
+
+    function initHero3D() {
+      var container = document.getElementById('hero3d');
+      if (!container || typeof THREE === 'undefined') return;
+      if (!container.clientWidth || !container.clientHeight) return;
+
+      var scene = new THREE.Scene();
+      var camera = new THREE.PerspectiveCamera(50, container.clientWidth / container.clientHeight, 0.1, 100);
+      camera.position.z = 19;
+
+      var renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+      renderer.setSize(container.clientWidth, container.clientHeight);
+      container.appendChild(renderer.domElement);
+
+      scene.add(new THREE.AmbientLight(0x2a3a5a, 1.3));
+
+      var light1 = new THREE.PointLight(0x22D3EE, 2.6, 60);
+      light1.position.set(-10, 6, 10);
+      scene.add(light1);
+
+      var light2 = new THREE.PointLight(0x3B82F6, 2.4, 60);
+      light2.position.set(10, -4, 8);
+      scene.add(light2);
+
+      var light3 = new THREE.PointLight(0x6366F1, 2.2, 60);
+      light3.position.set(0, 9, -6);
+      scene.add(light3);
+
+      var group = new THREE.Group();
+      scene.add(group);
+
+      function techMaterial() {
+        return new THREE.MeshStandardMaterial({ color: 0xffffff, metalness: 0.4, roughness: 0.2, emissive: 0x0a1a2e, flatShading: true });
+      }
+
+      function buildTechShape(type) {
+        var mat = techMaterial();
+        if (type === 0) { // nodo de circuito: brazos en los 6 ejes, se ve como conector desde cualquier ángulo
+          var g = new THREE.Group();
+          g.add(new THREE.Mesh(new THREE.BoxGeometry(0.34, 0.34, 0.34), mat));
+          var armLen = 0.55, armT = 0.16, off = armLen / 2 + 0.17;
+          var ax = new THREE.Mesh(new THREE.BoxGeometry(armLen, armT, armT), mat); ax.position.set(off, 0, 0); g.add(ax);
+          var ax2 = new THREE.Mesh(new THREE.BoxGeometry(armLen, armT, armT), mat); ax2.position.set(-off, 0, 0); g.add(ax2);
+          var ay = new THREE.Mesh(new THREE.BoxGeometry(armT, armLen, armT), mat); ay.position.set(0, off, 0); g.add(ay);
+          var ay2 = new THREE.Mesh(new THREE.BoxGeometry(armT, armLen, armT), mat); ay2.position.set(0, -off, 0); g.add(ay2);
+          var az = new THREE.Mesh(new THREE.BoxGeometry(armT, armT, armLen), mat); az.position.set(0, 0, off); g.add(az);
+          var az2 = new THREE.Mesh(new THREE.BoxGeometry(armT, armT, armLen), mat); az2.position.set(0, 0, -off); g.add(az2);
+          return g;
+        }
+        if (type === 1) { // chip con pines: reconocible como componente electrónico desde varios ángulos
+          var c = new THREE.Group();
+          c.add(new THREE.Mesh(new THREE.BoxGeometry(0.9, 0.9, 0.22), mat));
+          var pins = [-0.32, -0.11, 0.11, 0.32];
+          for (var pi = 0; pi < pins.length; pi++) {
+            var pt = new THREE.Mesh(new THREE.BoxGeometry(0.08, 0.16, 0.08), mat); pt.position.set(pins[pi], 0.53, 0); c.add(pt);
+            var pb = new THREE.Mesh(new THREE.BoxGeometry(0.08, 0.16, 0.08), mat); pb.position.set(pins[pi], -0.53, 0); c.add(pb);
+          }
+          return c;
+        }
+        if (type === 2) { // anillo
+          return new THREE.Mesh(new THREE.TorusGeometry(0.48, 0.19, 10, 22), mat);
+        }
+        return new THREE.Mesh(new THREE.BoxGeometry(0.68, 0.68, 0.68), mat); // bloque/módulo
+      }
+
+      var shapes = [];
+      var count = 22;
+      for (var i = 0; i < count; i++) {
+        var mesh = buildTechShape(i % 4);
+        var scale = 0.55 + Math.random() * 1.05;
+        mesh.scale.setScalar(scale);
+        mesh.position.set((Math.random() - 0.5) * 22, (Math.random() - 0.5) * 15, (Math.random() - 0.5) * 10 - 2);
+        mesh.rotation.set(Math.random() * Math.PI, Math.random() * Math.PI, Math.random() * Math.PI);
+        mesh.userData.spinX = (Math.random() - 0.5) * 0.006;
+        mesh.userData.spinY = (Math.random() - 0.5) * 0.004;
+        group.add(mesh);
+        shapes.push(mesh);
+      }
+
+      var mouseX = 0, mouseY = 0;
+      window.addEventListener('mousemove', function (e) {
+        mouseX = (e.clientX / window.innerWidth) - 0.5;
+        mouseY = (e.clientY / window.innerHeight) - 0.5;
+      });
+      window.addEventListener('resize', function () {
+        if (!container.clientWidth || !container.clientHeight) return;
+        camera.aspect = container.clientWidth / container.clientHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(container.clientWidth, container.clientHeight);
+      });
+
+      // deja de renderizar cuando el fondo 3D no está a la vista o la pestaña está en segundo plano;
+      // así no se gasta CPU/GPU mientras el visitante sigue viendo el resto de la página
+      var sceneVisible = true;
+      var loopRunning = false;
+
+      if ('IntersectionObserver' in window) {
+        var heroIO = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) { sceneVisible = entry.isIntersecting; });
+          if (sceneVisible && document.visibilityState !== 'hidden' && !loopRunning) { animate(); }
+        }, { threshold: 0 });
+        heroIO.observe(container);
+      }
+      document.addEventListener('visibilitychange', function () {
+        if (document.visibilityState !== 'hidden' && sceneVisible && !loopRunning) { animate(); }
+      });
+
+      function animate() {
+        if (!sceneVisible || document.visibilityState === 'hidden') { loopRunning = false; return; }
+        loopRunning = true;
+        requestAnimationFrame(animate);
+        group.rotation.y += 0.0009;
+        group.rotation.x += 0.0002;
+        for (var i = 0; i < shapes.length; i++) {
+          shapes[i].rotation.x += shapes[i].userData.spinX;
+          shapes[i].rotation.y += shapes[i].userData.spinY;
+        }
+        camera.position.x += (mouseX * 3 - camera.position.x) * 0.02;
+        camera.position.y += (-mouseY * 2 - camera.position.y) * 0.02;
+        camera.lookAt(scene.position);
+        renderer.render(scene, camera);
+      }
+      animate();
+    }
+  });
+</script>
+</body>
+</html>
