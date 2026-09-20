@@ -1,6 +1,6 @@
 {
   "redirects": [
-    { "source": "/qr/01", "destination": "https://www.hoskdeveloper.com", "permanent": false },
+    { "source": "/qr/01", "destination": "https://www.canva.com", "permanent": false },
     { "source": "/qr/02", "destination": "https://www.hoskdeveloper.com", "permanent": false },
     { "source": "/qr/03", "destination": "https://www.hoskdeveloper.com", "permanent": false },
     { "source": "/qr/04", "destination": "https://www.hoskdeveloper.com", "permanent": false },
