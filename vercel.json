@@ -1,6 +1,6 @@
 {
   "redirects": [
-    { "source": "/qr/01", "destination": "https://www.hoskdeveloper.com", "permanent": false },
+    { "source": "/qr/01", "destination": "https://search.google.com/local/writereview?placeid=ChIJAQCDAeIOjoURd2HhXSwP3Zc", "permanent": false },
     { "source": "/qr/02", "destination": "https://www.hoskdeveloper.com", "permanent": false },
     { "source": "/qr/03", "destination": "https://www.hoskdeveloper.com", "permanent": false },
     { "source": "/qr/04", "destination": "https://www.hoskdeveloper.com", "permanent": false },
