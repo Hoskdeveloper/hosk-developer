@@ -1,0 +1,14 @@
+{
+  "redirects": [
+    { "source": "/qr/01", "destination": "https://search.google.com/local/writereview?placeid=ChIJAQCDAeIOjoURd2HhXSwP3Zc", "permanent": false },
+    { "source": "/qr/02", "destination": "https://www.hoskdeveloper.com", "permanent": false },
+    { "source": "/qr/03", "destination": "https://www.hoskdeveloper.com", "permanent": false },
+    { "source": "/qr/04", "destination": "https://www.hoskdeveloper.com", "permanent": false },
+    { "source": "/qr/05", "destination": "https://www.hoskdeveloper.com", "permanent": false },
+    { "source": "/qr/06", "destination": "https://www.hoskdeveloper.com", "permanent": false },
+    { "source": "/qr/07", "destination": "https://www.hoskdeveloper.com", "permanent": false },
+    { "source": "/qr/08", "destination": "https://www.hoskdeveloper.com", "permanent": false },
+    { "source": "/qr/09", "destination": "https://www.hoskdeveloper.com", "permanent": false },
+    { "source": "/qr/10", "destination": "https://www.hoskdeveloper.com", "permanent": false }
+  ]
+}
