@@ -7,8 +7,12 @@
     { "source": "/qr/05", "destination": "https://search.google.com/local/writereview?placeid=ChIJB0h6AgAPjoURYceEuLGTaqk", "permanent": false },
     { "source": "/qr/06", "destination": "https://www.hoskdeveloper.com", "permanent": false },
     { "source": "/qr/07", "destination": "https://www.hoskdeveloper.com", "permanent": false },
-    { "source": "/qr/08", "destination": "https://www.hoskdeveloper.com", "permanent": false },
-    { "source": "/qr/09", "destination": "https://www.hoskdeveloper.com", "permanent": false },
-    { "source": "/qr/10", "destination": "https://www.hoskdeveloper.com", "permanent": false }
+    { "source": "/qr/08", "destination": "https://search.google.com/local/writereview?placeid=ChIJJ9IfMgAPjoURhxXg63z9NB4", "permanent": false },
+    { "source": "/qr/09", "destination": "https://search.google.com/local/writereview?placeid=ChIJJ9IfMgAPjoURhxXg63z9NB4", "permanent": false },
+    { "source": "/qr/10", "destination": "https://search.google.com/local/writereview?placeid=ChIJJ9IfMgAPjoURhxXg63z9NB4", "permanent": false },
+    { "source": "/qr/11", "destination": "https://search.google.com/local/writereview?placeid=ChIJJ9IfMgAPjoURhxXg63z9NB4", "permanent": false },
+    { "source": "/qr/12", "destination": "https://search.google.com/local/writereview?placeid=ChIJJ9IfMgAPjoURhxXg63z9NB4", "permanent": false },
+    { "source": "/qr/13", "destination": "https://search.google.com/local/writereview?placeid=ChIJJ9IfMgAPjoURhxXg63z9NB4", "permanent": false },
+    { "source": "/qr/14", "destination": "https://search.google.com/local/writereview?placeid=ChIJJ9IfMgAPjoURhxXg63z9NB4", "permanent": false }
   ]
 }
